@@ -1,4 +1,10 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using CadastroDeUsuario.Data;
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<CadastroDeUsuarioContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("CadastroDeUsuarioContext")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
